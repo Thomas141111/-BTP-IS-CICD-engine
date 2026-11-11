@@ -45,7 +45,7 @@ runs:
 
     - name: Request OAuth Token
       id: get-token
-      uses:  ./.github/actions/get-token
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-token@main
       with:
         btp-api-user: ${{ inputs.btp-api-user }}
         btp-tec-user: ${{ inputs.btp-tec-user }}
@@ -63,7 +63,7 @@ runs:
     - name: Delete Package from CPI Designtime
       id: delete-package-cpi-designtime
       if: ${{ inputs.case == 'Delete' }}
-      uses:  ./.github/actions/delete-package-from-designtime
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/delete-package-from-designtime@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
