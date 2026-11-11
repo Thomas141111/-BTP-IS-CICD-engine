@@ -58,7 +58,7 @@ runs:
 
     - name: Request OAuth Token
       id: get-token
-      uses:  ./.github/actions/get-token
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-token@main
       with:
         btp-api-user: ${{ inputs.btp-api-user }}
         btp-tec-user: ${{ inputs.btp-tec-user }}
@@ -69,7 +69,7 @@ runs:
     - name: Get IFLOW IDs of Package
       if: ${{ (inputs.iflow-deploy == 'true' && inputs.mode == 'deploy') || inputs.mode == 'undeploy' }}
       id: get-iflow-ids
-      uses:  ./.github/actions/get-object-ids-of-package
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-object-ids-of-package@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
@@ -78,7 +78,7 @@ runs:
 
     - name: Get MAPPING IDs of Package
       id: get-mapping-ids
-      uses:  ./.github/actions/get-object-ids-of-package
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-object-ids-of-package@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
@@ -87,7 +87,7 @@ runs:
 
     - name: Get SCRIPT COLLECTION IDs of Package
       id: get-sc-ids
-      uses:  ./.github/actions/get-object-ids-of-package
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-object-ids-of-package@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
@@ -96,7 +96,7 @@ runs:
 
     - name: Get VALUE MAPPING IDs of Package
       id: get-vm-ids
-      uses:  ./.github/actions/get-object-ids-of-package
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-object-ids-of-package@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
@@ -105,7 +105,7 @@ runs:
 
     - name: Add MAPPING IDs to deployment
       id: add-mappingids-for-deployment
-      uses:  ./.github/actions/merge-ids-for-deployment
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/merge-ids-for-deployment@main
       with:
         package-id: ${{ inputs.package-id }}
         package-name: ${{ steps.get-package-name.outputs.name }}
@@ -114,7 +114,7 @@ runs:
 
     - name: Add SCRIPT COLLECTION IDs to deployment
       id: add-scids-for-deployment
-      uses:  ./.github/actions/merge-ids-for-deployment
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/merge-ids-for-deployment@main
       with:
         package-id: ${{ inputs.package-id }}
         package-name: ${{ steps.get-package-name.outputs.name }}
@@ -123,7 +123,7 @@ runs:
 
     - name: Add VALUE MAPPING IDs to deployment
       id: add-vmids-for-deployment
-      uses:  ./.github/actions/merge-ids-for-deployment
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/merge-ids-for-deployment@main
       with:
         package-id: ${{ inputs.package-id }}
         package-name: ${{ steps.get-package-name.outputs.name }}
@@ -133,7 +133,7 @@ runs:
     - name: Add IFLOW IDs from Deployment_INTEGRATION_FLOW.json to deployment
       if: ${{ (inputs.iflow-deploy == 'true' && inputs.mode == 'deploy') || inputs.mode == 'undeploy' }}
       id: add-iflows-for-deployment
-      uses:  ./.github/actions/add-iflows-for-deployment
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/add-iflows-for-deployment@main
       with:
         package-id: ${{ inputs.package-id }}
         package-name: ${{ steps.get-package-name.outputs.name }}
@@ -167,7 +167,7 @@ runs:
 
     - name: Deploy or Undeploy all package artifacts
       if: steps.check-deploytask-file.outputs.file_exists_and_not_empty == 'true'
-      uses:  ./.github/actions/deploy-package-artifacts
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/deploy-package-artifacts@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
