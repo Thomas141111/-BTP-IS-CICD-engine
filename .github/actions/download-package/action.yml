@@ -23,7 +23,7 @@ runs:
   steps:
       - name: Get Package Name
         id: get-package-name
-        uses: ./.github/actions/get-package-name
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-package-name@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
@@ -40,7 +40,7 @@ runs:
 
       - name: Prepare Repo
         id: prepare-repo
-        uses: ./.github/actions/delete-old-package-version-in-repo
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/delete-old-package-version-in-repo@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
@@ -49,13 +49,13 @@ runs:
 
       - name: Extract Package into Repo
         id: extract-zip
-        uses: ./.github/actions/export-package-zip-into-repo
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/export-package-zip-into-repo@main
         with:
           location-zip: ${{ steps.get-package.outputs.location }}
       
       - name: Get IFLOW IDs of Package
         id: get-iflow-ids
-        uses: ./.github/actions/get-object-ids-of-package
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-object-ids-of-package@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
@@ -64,7 +64,7 @@ runs:
 
       - name: Get external Parameter for a list of IFLOW IDs
         id: get-ext-params
-        uses: ./.github/actions/get-ext-param-for-iflowlist
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-ext-param-for-iflowlist@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
@@ -75,7 +75,7 @@ runs:
       # Merges external parameters (old and new json - only if old exists), while preserving non-default parameters.
       - name: Merge new external parameters with pre-existing
         id: merge-ext-params
-        uses: ./.github/actions/merge-package-configuration-json
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/merge-package-configuration-json@main
         with:
           new-config-file-path: ${{ steps.get-ext-params.outputs.PATH }}
           package-id: ${{ inputs.package-id }}
@@ -83,7 +83,7 @@ runs:
 
       - name: Create IFlow Deployment File and merges existing
         id: create-iflow-deployment-file
-        uses: ./.github/actions/create-iflow-deployment-file
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/create-iflow-deployment-file@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
