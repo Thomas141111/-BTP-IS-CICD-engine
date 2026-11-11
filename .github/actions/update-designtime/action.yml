@@ -56,7 +56,7 @@ runs:
     - name: Prepare ZIP
       id: prepare-zip
       if: ${{ inputs.case == 'Upload' }}
-      uses:  ./.github/actions/prepare-zip-from-dir
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/prepare-zip-from-dir@main
       with:
         package-id: ${{ inputs.package-id }}
 
@@ -72,7 +72,7 @@ runs:
     - name: Upload Package to CPI
       id: deploy-package
       if: ${{ inputs.case == 'Upload' }}
-      uses:  ./.github/actions/deploy-package
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/deploy-package@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url: ${{ inputs.btp-api-url }}
@@ -82,7 +82,7 @@ runs:
     - name: Update iFlow Externalized Parameters
       id: configure_parameters_iflow
       if: ${{ inputs.case == 'Upload' }}
-      uses:  ./.github/actions/update-config-parameters
+      uses:  Thomas141111/-BTP-IS-CICD-engine/.github/actions/update-config-parameters@main
       with:
         bearer-token: ${{ steps.get-token.outputs.token }}
         btp-api-url:  ${{ inputs.btp-api-url }}
