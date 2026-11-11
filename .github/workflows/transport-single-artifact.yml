@@ -115,7 +115,7 @@ jobs:
 
       - name: Request OAuth Token
         id: get-token
-        uses: ./.github/actions/get-token
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-token@main
         with:
           btp-api-user: ${{ vars.BTP_API_USER }}
           btp-tec-user: ${{ vars.BTP_TEC_USER }}
