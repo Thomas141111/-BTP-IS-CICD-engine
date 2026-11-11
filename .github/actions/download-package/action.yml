@@ -31,7 +31,7 @@ runs:
 
       - name: Get Package as ZIP
         id: get-package
-        uses: ./.github/actions/get-package-as-zip
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/get-package-as-zip@main
         with:
           bearer-token: ${{ inputs.bearer-token }}
           btp-api-url: ${{ inputs.btp-api-url }}
