@@ -180,7 +180,7 @@ jobs:
           echo "package_id=$PACKAGE_ID" >> $GITHUB_OUTPUT
 
       - name: Upload Package to CPI Designtime
-        uses: ./.github/actions/update-designtime
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/update-designtime@main
         with:
           target-env: ${{ inputs.target-env }}
           source-ref: ${{ inputs.source-branch }}
@@ -192,7 +192,7 @@ jobs:
           BTP_API_PASSWORD: ${{ secrets.BTP_API_PASSWORD }}
           
       - name: Deploy Package to CPI Runtime
-        uses: ./.github/actions/update-runtime
+        uses: Thomas141111/-BTP-IS-CICD-engine/.github/actions/update-runtime@main
         with:
           target-env: ${{ inputs.target-env }}
           source-ref: ${{ inputs.source-branch }}
